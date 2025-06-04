@@ -3,53 +3,47 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login or Register</title>
+        <title>Login</title>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
-        <div class="max-w-4xl max-sm:max-w-lg mx-auto p-6 mt-6">
-              <div class="text-center mb-12 sm:mb-16">
-                <a href="javascript:void(0)"><img
-                  src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-44 inline-block' />
-                </a>
-                <h4 class="text-slate-600 text-base mt-6">Sign up into your account</h4>
-              </div>
+    <body class="bg-[#232525] min-h-screen flex items-center justify-center">
+      <div class="bg-black p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h1 class="text-white text-4xl font-bold mb-6">Login</h1>
+        <p class="text-white text-1xl mb-8 tracking-wide" >Welcome back to your account!</p>
 
-              <form>
-                <div class="grid sm:grid-cols-2 gap-8">
-                  <div>
-                    <label class="text-slate-800 text-sm font-medium mb-2 block">First Name</label>
-                    <input name="name" type="text" class="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter name" />
-                  </div>
-                  <div>
-                    <label class="text-slate-800 text-sm font-medium mb-2 block">Last Name</label>
-                    <input name="lname" type="text" class="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter last name" />
-                  </div>
-                  <div>
-                    <label class="text-slate-800 text-sm font-medium mb-2 block">Email Id</label>
-                    <input name="email" type="text" class="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter email" />
-                  </div>
-                  <div>
-                    <label class="text-slate-800 text-sm font-medium mb-2 block">Mobile No.</label>
-                    <input name="number" type="number" class="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter mobile number" />
-                  </div>
-                  <div>
-                    <label class="text-slate-800 text-sm font-medium mb-2 block">Password</label>
-                    <input name="password" type="password" class="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter password" />
-                  </div>
-                  <div>
-                    <label class="text-slate-800 text-sm font-medium mb-2 block">Confirm Password</label>
-                    <input name="cpassword" type="password" class="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter confirm password" />
-                  </div>
-                </div>
+        <form action="/login" method="POST" class="space-y-6">
+          @csrf
+          <div>
+            <label for="login_email" class="block text-gray-300 mb-2">Email</label>
+            <input type="email" id="email" name="login_email" required
+                   class="w-full p-3 rounded-md bg-[#2d2d2d] text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+          </div>
 
-                <div class="mt-12">
-                  <button type="button" class="mx-auto block py-3 px-6 text-sm font-medium tracking-wider rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none cursor-pointer">
-                    Sign up
-                  </button>
-                </div>
-              </form>
-            </div>
+          <div>
+            <label for="login_password" class="block text-gray-300 mb-2">Password</label>
+            <input type="password" id="password" name="login_password" autocomplete="false" required
+                   class="w-full p-3 rounded-md bg-[#2d2d2d] text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+          </div>
+          @error('login_email')
+          <div class="text-red-600 text-sm mt-2">{{ $message }}</div>
+          @enderror
+
+
+          <button type="submit"
+                  class="w-full bg-yellow-400 text-black font-semibold py-3 rounded-md hover:bg-yellow-500 transition">
+            Login
+          </button>
+        </form>
+
+        <p class="text-gray-400 mt-6 text-center">
+          Don’t have an account?
+          <a href= "{{ url('/register') }}" class="text-yellow-400 hover:underline">Register here</a>
+        </p>
+      </div>
+      <div class="absolute -z-10 inset-0 h-full w-full
+      bg-[radial-gradient(circle,#ffffe020_1px,transparent_1px)]
+      bg-[size:10px_10px]" />
     </body>
+
 </html>

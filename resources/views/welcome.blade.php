@@ -9,7 +9,7 @@
     </head>
     <body class="bg-[#232525] min-h-screen flex items-center justify-center">
         <div class=" p-6">
-          <h1 class="dark:text-white text-7xl text-center m-8 font-bold">Welcome to My <span class="text-yellow-400">Notes</span> App!</h1>
+          <h1 class="dark:text-white text-7xl text-center m-8 font-bold">Welcome to <span class="text-yellow-400">Notes</span> App!</h1>
           <p class="dark:text-white text-center tracking-wide text-2xl mb-20">
             This is my first Laravel App! Let's get started
           </p>
