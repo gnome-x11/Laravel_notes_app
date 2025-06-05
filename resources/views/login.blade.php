@@ -7,8 +7,12 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-[#232525] min-h-screen flex items-center justify-center">
-      <div class="bg-black p-8 rounded-xl shadow-lg w-full max-w-md">
+    <body class="bg-[#171C22] min-h-screen flex items-center justify-center">
+
+      <div class="bg-[#0E0E0B] p-8 rounded-xl shadow-lg w-full max-w-md">
+          @error('login_email')
+          <div class="text-red-600 text-sm mt-2">{{ $message }}</div>
+          @enderror
         <h1 class="text-white text-4xl font-bold mb-6">Login</h1>
         <p class="text-white text-1xl mb-8 tracking-wide" >Welcome back to your account!</p>
 
@@ -25,10 +29,6 @@
             <input type="password" id="password" name="login_password" autocomplete="false" required
                    class="w-full p-3 rounded-md bg-[#2d2d2d] text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
           </div>
-          @error('login_email')
-          <div class="text-red-600 text-sm mt-2">{{ $message }}</div>
-          @enderror
-
 
           <button type="submit"
                   class="w-full bg-yellow-400 text-black font-semibold py-3 rounded-md hover:bg-yellow-500 transition">

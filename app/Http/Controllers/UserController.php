@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function logout () {
+    public function logout(Request $request)
+    {
         auth()->logout();
-        return redirect('/welcome');
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
+
 
     public function login(Request $request){
         $loginFields = $request->validate([

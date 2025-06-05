@@ -7,8 +7,8 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-<body class="bg-[#232525] min-h-screen flex items-center justify-center">
-  <div class="bg-black p-8 rounded-xl shadow-lg w-full max-w-md">
+<body class="bg-[#171C22] min-h-screen flex items-center justify-center">
+  <div class="bg-[#0E0E0B] p-8 rounded-xl shadow-lg w-full max-w-md">
     <h1 class="text-white text-4xl font-bold mb-6">Register</h1>
 
     <form class="space-y-6" action="/register" method="POST">

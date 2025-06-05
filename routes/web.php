@@ -3,21 +3,24 @@
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Note;
 
 Route::get('/', function () {
     $notes = [];
     if (auth()->check()) {
         $notes = auth()->user()->userNotes()->latest()->get();
+        return view('note', ['notes' => $notes]);
     }
-    return view('note', ['notes' => $notes]);
+
+    return view('welcome'); // show landing page or login prompt
 });
+
 
 //user
 Route::get('/login', [UserController::class, 'showLogin']);
 Route::get('/register', [UserController::class, 'showRegister']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout']);
 
 //notes
 Route::get('/note', [UserController::class, 'showNote'])->middleware('auth');
