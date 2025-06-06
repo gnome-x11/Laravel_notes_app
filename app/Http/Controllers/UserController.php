@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 
@@ -63,7 +64,8 @@ class UserController extends Controller
     }
 
     public function showNote() {
-        return view('note');
+        $notes = Note::where('user_id', auth()->id())->get();
+        return view('note', compact('notes'));
     }
 
 }

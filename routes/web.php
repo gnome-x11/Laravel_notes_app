@@ -11,7 +11,7 @@ Route::get('/', function () {
         return view('note', ['notes' => $notes]);
     }
 
-    return view('welcome'); // show landing page or login prompt
+    return view('/welcome'); // show landing page or login prompt
 });
 
 
@@ -25,3 +25,8 @@ Route::post('/logout', [UserController::class, 'logout']);
 //notes
 Route::get('/note', [UserController::class, 'showNote'])->middleware('auth');
 Route::post('/create-note', [NoteController::class, 'createNote']);
+
+Route::get('/edit_note/{note}', [NoteController::class, 'showEditScreen']);
+Route::put('/edit_note/{note}', [NoteController::class, 'updateNote']);
+
+Route::delete('/delete_note/{note}', [NoteController::class, 'deleteNote']);
